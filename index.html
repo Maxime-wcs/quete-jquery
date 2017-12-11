@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrousel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Quête carrousel</h1>
+
+<div class="jcarousel-wrapper">
+    <div class="jcarousel">
+        <ul>
+            <li><img src="/image/1.jpg" width="600" height="400" alt=""></li>
+            <li><img src="/image/2.jpg" width="600" height="400" alt=""></li>
+            <li><img src="/image/3.JPG" width="600" height="400" alt=""></li>
+        </ul>
+    </div>
+
+    <button class="control-prev"> <</button>
+    <button class="control-next"> ></button>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+
+        $('.control-prev').on('click', function(){
+            $(".jcarousel ul").animate({
+                marginLeft: 350
+            }, function () {
+                $(this).css({
+                    marginLeft: 0
+                }).find("li:last").after($(this).find("li:first"));
+            })
+        });
+
+        $('.control-next').on('click', function(){
+            $(".jcarousel ul").animate({
+                marginLeft: -350
+            }, function () {
+                $(this).css({
+                    marginLeft: 0
+                }).find("li:last").after($(this).find("li:first"));
+            })
+        });
+
+        setInterval(function () {
+            $(".jcarousel ul").animate({
+                marginLeft: -350
+            }, 1000, function () {
+                $(this).css({
+                    marginLeft: 0
+                }).find("li:last").after($(this).find("li:first"));
+            })
+        }, 3000);
+    });
+
+
+</script>
+
+</body>
+</html>
